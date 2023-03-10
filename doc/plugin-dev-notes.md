@@ -140,7 +140,7 @@ It looks like the second lexer/parser is invoked from CompletionAutoPopupHandler
 
 I gave up on this and simply spent a few hours getting my own error annotations added to a standard editor window based upon ANTLR parsing. Much easier than figuring out the quirky and finicky parsing infrastructure within intellij.
 
-### Turning off auto completion lexing
+### Turning off auto-completion lexing
 
 In the end it became clear that we cannot turn this off because other plug-ins might need it. I'm not sure this will work anyway.
  

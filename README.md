@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    compile "org.antlr:antlr4-intellij-adaptor:0.1"
+    implementation ("org.antlr:antlr4-intellij-adaptor:0.1")
 }
 ```
 
