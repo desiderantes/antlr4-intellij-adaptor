@@ -49,12 +49,12 @@ tasks {
 }
 
 
-tasks.register<Jar>("sourcesJar") {
+val sourcesJar = tasks.register<Jar>("sourcesJar") {
     from(sourceSets.main.get().allJava)
     archiveClassifier.set("sources")
 }
 
-tasks.register<Jar>("javadocJar") {
+val javadocJar = tasks.register<Jar>("javadocJar") {
     from(tasks.javadoc)
     archiveClassifier.set("javadoc")
 }
@@ -67,8 +67,8 @@ publishing {
             version = properties("libraryVersion")
 
             from(components["java"])
-            artifact("sourcesJar")
-            artifact("javadocJar")
+            artifact(sourcesJar)
+            artifact(javadocJar)
 
             pom {
                 name.set("ANTLRV4 adaptor for IntelliJ-based IDEs")
