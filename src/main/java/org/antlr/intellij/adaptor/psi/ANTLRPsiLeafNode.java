@@ -10,7 +10,7 @@ import org.antlr.intellij.adaptor.SymtabUtils;
  * You don't have to use it of course, but it gives you basic
  * simple scoping behavior via getContext().
  * <p>
- * I recommends creating a subclass for identifiers, such as
+ * I recommend creating a subclass for identifiers, such as
  * MyLanguageIDNode. To enable rename, find usages, etc... that
  * node will need to implement PsiNamedElement.
  */

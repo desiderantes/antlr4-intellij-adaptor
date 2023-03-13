@@ -36,7 +36,7 @@ import org.antlr.intellij.adaptor.psi.Trees;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class XPathWildcardAnywhereElement extends XPathElement {
+public final class XPathWildcardAnywhereElement extends XPathElement {
     public XPathWildcardAnywhereElement() {
         super(XPath.WILDCARD);
     }

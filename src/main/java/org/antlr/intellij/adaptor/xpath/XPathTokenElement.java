@@ -38,7 +38,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class XPathTokenElement extends XPathElement {
+public final class XPathTokenElement extends XPathElement {
     protected int tokenType;
 
     public XPathTokenElement(String tokenName, int tokenType) {

@@ -42,8 +42,8 @@ public class SymtabUtils {
 
     public static ScopeNode getContextFor(PsiElement element) {
         PsiElement parent = element.getParent();
-        if (parent instanceof ScopeNode) {
-            return (ScopeNode) parent;
+        if (parent instanceof ScopeNode scopeNode) {
+            return scopeNode;
         }
         if (parent instanceof PsiErrorElement) {
             return null;

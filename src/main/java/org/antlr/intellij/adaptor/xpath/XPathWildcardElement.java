@@ -34,9 +34,10 @@ import com.intellij.psi.PsiElement;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
-public class XPathWildcardElement extends XPathElement {
+public final class XPathWildcardElement extends XPathElement {
     public XPathWildcardElement() {
         super(XPath.WILDCARD);
     }
@@ -45,9 +46,7 @@ public class XPathWildcardElement extends XPathElement {
     public Collection<PsiElement> evaluate(final PsiElement t) {
         if (invert) return new ArrayList<>(); // !* is weird but valid (empty)
         List<PsiElement> kids = new ArrayList<>();
-        for (PsiElement c : t.getChildren()) {
-            kids.add(c);
-        }
+        Collections.addAll(kids, t.getChildren());
         return kids;
     }
 }

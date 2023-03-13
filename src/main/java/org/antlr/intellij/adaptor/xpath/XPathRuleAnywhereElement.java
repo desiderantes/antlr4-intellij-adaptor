@@ -38,7 +38,7 @@ import java.util.Collection;
 /**
  * Either {@code rulename} at start of path or {@code ...//rulename} in middle of path.
  */
-public class XPathRuleAnywhereElement extends XPathElement {
+public final class XPathRuleAnywhereElement extends XPathElement {
     protected int ruleIndex;
 
     public XPathRuleAnywhereElement(String ruleName, int ruleIndex) {

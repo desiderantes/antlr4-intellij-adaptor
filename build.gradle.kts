@@ -77,15 +77,24 @@ publishing {
                 licenses {
                     license {
                         name.set("BSD 2-Clause \"Simplified\" License")
-                        url.set("https://github.com/antlr/antlr4-intellij-adaptor/blob/master/LICENSE")
+                        url.set("https://github.com/desiderantes/antlr4-intellij-adaptor/blob/master/LICENSE")
                     }
                 }
                 developers {
-                    developer {
-                        id.set("parrt")
-                        name.set("Terence Parr")
-                        email.set("parrt@cs.usfca.edu")
-                    }
+
+                    rootDir.resolve("contributors.txt").bufferedReader()
+                        .lines()
+                        .filter { !it.startsWith("#") }
+                        .filter { it.isNotBlank() }
+                        .filter { !it.startsWith("YYYY") }
+                        .map { it.split(",").map { s -> s.trim() } }
+                        .forEach {
+                            developer {
+                                id.set(it[1])
+                                name.set(it[2])
+                                email.set(it[3])
+                            }
+                        }
                 }
                 scm {
                     connection.set("scm:git:git://github.com/desiderantes/antlr4-intellij-adaptor.git")

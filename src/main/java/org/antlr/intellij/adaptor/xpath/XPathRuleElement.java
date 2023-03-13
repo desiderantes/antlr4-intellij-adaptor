@@ -38,7 +38,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class XPathRuleElement extends XPathElement {
+public final class XPathRuleElement extends XPathElement {
     protected int ruleIndex;
 
     public XPathRuleElement(String ruleName, int ruleIndex) {

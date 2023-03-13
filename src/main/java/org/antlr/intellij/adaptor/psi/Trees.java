@@ -47,6 +47,7 @@ import org.antlr.intellij.adaptor.lexer.TokenIElementType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
+import java.util.function.Predicate;
 
 public class Trees {
     private Trees() {
@@ -54,7 +55,7 @@ public class Trees {
 
     /**
      * Return a list of all ancestors of this node.  The first node of
-     * list is the root and the last is the parent of this node.
+     * list is the root and the last one is the parent of this node.
      */
     public static List<? extends PsiElement> getAncestors(PsiElement t) {
         if (t.getParent() == null) return Collections.emptyList();
@@ -116,16 +117,14 @@ public class Trees {
     public static void _findAllNodes(PsiElement t, int index, boolean findTokens,
                                      List<? super PsiElement> nodes) {
         // check this node (the root) first
-        if (findTokens && t instanceof LeafPsiElement) {
-            LeafPsiElement tnode = (LeafPsiElement) t;
+        if (findTokens && t instanceof LeafPsiElement tnode) {
             IElementType elType = tnode.getNode().getElementType();
             if (elType instanceof TokenIElementType) {
                 if (((TokenIElementType) elType).getANTLRTokenType() == index) {
                     nodes.add(t);
                 }
             }
-        } else if (!findTokens && t instanceof ANTLRPsiNode) {
-            ANTLRPsiNode ctx = (ANTLRPsiNode) t;
+        } else if (!findTokens && t instanceof ANTLRPsiNode ctx) {
             IElementType elType = ctx.getNode().getElementType();
             if (elType instanceof RuleIElementType) {
                 if (((RuleIElementType) elType).getRuleIndex() == index) nodes.add(t);
@@ -172,7 +171,7 @@ public class Trees {
     }
 
     /**
-     * Find smallest subtree of t enclosing range startCharIndex..stopCharIndex
+     * Find the smallest subtree of t enclosing range startCharIndex..stopCharIndex
      * inclusively using postorder traversal.  Recursive depth-first-search.
      */
     public static PsiElement getRootOfSubtreeEnclosingRegion(PsiElement t,
@@ -234,9 +233,5 @@ public class Trees {
         String fileName = "___fubar___." + ext; // random name but must have correct extension
         PsiFileFactoryImpl factory = (PsiFileFactoryImpl) PsiFileFactory.getInstance(project);
         return factory.createFileFromText(fileName, language, text, false, false);
-    }
-
-    public interface Predicate<T> {
-        boolean test(T t);
     }
 }

@@ -34,7 +34,7 @@ import com.intellij.psi.PsiElement;
 
 import java.util.Collection;
 
-public abstract class XPathElement {
+public sealed abstract class XPathElement permits XPathRuleAnywhereElement, XPathRuleElement, XPathTokenAnywhereElement, XPathTokenElement, XPathWildcardAnywhereElement, XPathWildcardElement {
     protected String nodeName;
     protected boolean invert;
 

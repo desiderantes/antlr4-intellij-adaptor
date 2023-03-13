@@ -48,7 +48,7 @@ public class ANTLRParseTreeToPSIConverter implements ParseTreeListener {
                 syntaxErrors = ((SyntaxErrorListener) listener).getSyntaxErrors();
                 for (SyntaxError error : syntaxErrors) {
                     // record first error per token
-                    int StartIndex = error.getOffendingSymbol().getStartIndex();
+                    int StartIndex = error.offendingSymbol().getStartIndex();
                     if (!tokenToErrorMap.containsKey(StartIndex)) {
                         tokenToErrorMap.put(StartIndex, error);
                     }
@@ -131,7 +131,7 @@ public class ANTLRParseTreeToPSIConverter implements ParseTreeListener {
                 // but can't consume a token that does not exist.
                 builder.advanceLexer();
             }
-            String message = String.format("%s%n", error.getMessage());
+            String message = String.format("%s%n", error.message());
             errorMarker.error(message);
         } else {
             if (isConjuredToken) {

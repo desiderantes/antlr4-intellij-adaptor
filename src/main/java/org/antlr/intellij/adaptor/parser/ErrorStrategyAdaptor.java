@@ -23,7 +23,7 @@ public class ErrorStrategyAdaptor extends DefaultErrorStrategy {
     }
 
     /**
-     * By default ANTLR makes the start/stop -1/-1 for invalid tokens
+     * By default, ANTLR makes the start/stop -1/-1 for invalid tokens
      * which is reasonable but here we want to highlight the
      * current position indicating that is where we lack a token.
      * if no input, highlight at position 0.
@@ -31,13 +31,13 @@ public class ErrorStrategyAdaptor extends DefaultErrorStrategy {
     protected Token getMissingSymbol(Parser recognizer) {
         Token missingSymbol = super.getMissingSymbol(recognizer);
         // alter the default missing symbol.
-        if (missingSymbol instanceof CommonToken) {
+        if (missingSymbol instanceof CommonToken commonToken) {
             int start, stop;
             Token current = recognizer.getCurrentToken();
             start = current.getStartIndex();
             stop = current.getStopIndex();
-            ((CommonToken) missingSymbol).setStartIndex(start);
-            ((CommonToken) missingSymbol).setStopIndex(stop);
+            commonToken.setStartIndex(start);
+            commonToken.setStopIndex(stop);
         }
         return missingSymbol;
     }
